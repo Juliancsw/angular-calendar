@@ -1,0 +1,141 @@
+
+::ng-deep body {
+    height:100vh;
+    margin: 0;
+}
+
+.main{
+    width:100%;
+    height: 100%;
+    background-color: yellow;
+
+    .calendar{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100px repeat(7, 1fr);
+        grid-template-rows: 100px repeat(17, 1fr);
+        
+        [class^="calendar-item-"]{
+            display: flex;
+            flex-direction: row;
+            border: 1px solid black;
+
+        }
+    }
+
+    .time-select{
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100px;
+        height: calc(100vh - 102px);
+        z-index: 2;
+        opacity: 40%;
+        display: flex;
+        flex-direction: column;
+
+        [class^="time-"]{
+            flex: 1;
+            width: inherit;
+        }
+    }
+
+    .add-session{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-background{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: inherit;
+            opacity: 40%;
+            background-color: black;
+        }
+
+        &-modal{
+            width: 50%;
+            height: 50%;
+            z-index: 1;
+            padding: 0 20px;
+            background-color: white;
+            font-size: 2rem;
+
+            & > div {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            &-close{
+                display: flex;
+                flex-direction: row-reverse;
+
+                &-button{
+                    width: 20px;
+                    height: 20px;
+                    color: grey;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &-submit{
+                &-button{
+                    width: 100px;
+                    height: 40px;
+                    border-radius: 4px;
+                    color: white;
+                    background-color: #0275d8;
+                }
+            }
+        }
+    }
+
+    .days{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 100px);
+        height: calc(100vh - 102px); //2px for border
+        padding: 100px 0 0 100px;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        
+        [class^="day-"]{
+            height: inherit;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid black;
+
+            [class^="track-"]{
+                flex: 1;
+                height: inherit;
+                display: flex;
+                flex-direction: column;
+
+                .session{
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                    word-wrap: break-word;
+                    overflow-y: auto;
+                }
+            }
+
+        }
+    }
+}
